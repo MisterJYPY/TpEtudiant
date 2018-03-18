@@ -5,10 +5,15 @@
  */
 package loader;
 
+import controller.ClasseFormController;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -16,33 +21,33 @@ import javafx.stage.Stage;
  * @author Smart Enigma Techno (NANOU KAKOU JEAN-PAUL)
  */
 public class TpEtudiant1 extends Application {
-    
+    FXMLLoader loader = null;
     @Override
     public void start(Stage primaryStage) {
         
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        /*
-        btn.setOnAction(new EventHandler<ActionEvent>() {
+         try {
+//            Image image = new Image(
+//                    getClass().getResourceAsStream("image/icone.png")
+//            );
+            loader = new FXMLLoader();
+           // loader.setLocation(getClass().getResource("/formuly/view/frontend/acceuille.fxml"));
+           
+            loader.setLocation(getClass().getResource("/userInterface/classeForm.fxml"));
+//            dem=new DemarrageAppController();
+             loader.setController(ClasseFormController.class.newInstance());
+            Parent root = loader.load();
+            primaryStage.setTitle("démarrage");
+       //     primaryStage.getIcons().add(image);
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
             
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-        */
-        btn.setOnAction(e->{
-                System.out.println("Hello World!");
-}) ;
-
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        
-        Scene scene = new Scene(root, 300, 250);
-        
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        } catch (IOException ex) {        
+         Logger.getLogger(TpEtudiant1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(TpEtudiant1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(TpEtudiant1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
