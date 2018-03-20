@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
@@ -49,16 +48,16 @@
             <AnchorPane prefHeight="3.0" prefWidth="584.0" BorderPane.alignment="CENTER" />
          </top>
          <center>
-            <TableView fx:id="table_etudiant" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="numero" prefWidth="26.0" text="N°" />
+                <TableColumn fx:id="table_numero" prefWidth="26.0" text="N°" />
                 <TableColumn fx:id="table_nom" prefWidth="90.0" text="Nom" />
                   <TableColumn fx:id="table_prenom" prefWidth="122.0" text="Prenom" />
                   <TableColumn fx:id="table_matricule" prefWidth="102.0" text="Numero Carte" />
                   <TableColumn fx:id="table_dateN" prefWidth="79.0" text="Date Naissance" />
-                  <TableColumn fx:id="table_lieuN" prefWidth="108.0" text="Classe Actuelle" />
-                  <TableColumn fx:id="table_modif" prefWidth="54.0" text="Modif" />
-                  <TableColumn fx:id="table_edit" prefWidth="50.0" text="Delete" />
+                  <TableColumn fx:id="table_lieuN" prefWidth="108.0" text="Lieu Naissance" />
+                  <TableColumn fx:id="table_modif" prefWidth="54.0" text="delete" />
+                  <TableColumn fx:id="table_del" prefWidth="50.0" text="choix" />
               </columns>
             </TableView>
          </center>
@@ -80,14 +79,10 @@
                   <TextField fx:id="prenom" layoutX="66.0" layoutY="65.0" prefHeight="25.0" prefWidth="194.0" />
                   <Label layoutX="4.0" layoutY="123.0" prefHeight="17.0" prefWidth="61.0" text="Matricule :" />
                   <TextField fx:id="matricule" layoutX="66.0" layoutY="119.0" prefHeight="25.0" prefWidth="194.0" />
-                  <Label layoutX="6.0" layoutY="173.0" prefHeight="25.0" prefWidth="62.0" text="Contact :" />
-                  <TextField fx:id="contact" layoutX="66.0" layoutY="173.0" prefHeight="25.0" prefWidth="194.0" />
-                  <Label layoutX="-1.0" layoutY="232.0" prefHeight="22.0" prefWidth="66.0" text="Adresse :" />
-                  <TextField fx:id="adresse" layoutX="66.0" layoutY="231.0" prefHeight="25.0" prefWidth="194.0" />
-                  <Label layoutY="279.0" prefHeight="17.0" prefWidth="69.0" text="Date N :" />
-                  <DatePicker fx:id="dateN" layoutX="67.0" layoutY="275.0" prefHeight="25.0" prefWidth="193.0" />
-                  <Label layoutX="-1.0" layoutY="321.0" prefHeight="20.0" prefWidth="68.0" text="Lieu N :" />
-                  <TextField fx:id="lieuN" layoutX="69.0" layoutY="319.0" prefHeight="25.0" prefWidth="194.0" />
+                  <Label layoutX="5.0" layoutY="189.0" prefHeight="17.0" prefWidth="59.0" text="Date N :" />
+                  <DatePicker fx:id="dateN" layoutX="70.0" layoutY="185.0" prefHeight="25.0" prefWidth="193.0" />
+                  <Label layoutX="5.0" layoutY="259.0" prefHeight="20.0" prefWidth="60.0" text="Lieu N :" />
+                  <TextField fx:id="lieuN" layoutX="66.0" layoutY="256.0" prefHeight="25.0" prefWidth="200.0" />
                </children>
             </Pane>
             <Label layoutX="348.0" layoutY="14.0" prefHeight="23.0" prefWidth="203.0" text="Inscription Etudiant dans une classe" />

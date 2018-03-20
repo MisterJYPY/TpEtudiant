@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.jpa;
+package Model;
 
+import Entities.Classe;
 import Entities.Etudiant;
 import java.io.Serializable;
 import javax.persistence.Query;
@@ -15,7 +16,10 @@ import Entities.Inscription;
 import controller.jpa.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
@@ -149,7 +153,29 @@ public class EtudiantJpaController implements Serializable {
     public List<Etudiant> findEtudiantEntities(int maxResults, int firstResult) {
         return findEtudiantEntities(false, maxResults, firstResult);
     }
-
+      public ObservableList<etudiantFormModel> listTableModel()
+    {
+        List<Etudiant> list=findEtudiantEntities();
+        ObservableList<etudiantFormModel> listObs=FXCollections.observableArrayList();
+       int cpt=1;
+        for (Iterator<Etudiant> iterator = list.iterator(); iterator.hasNext();) {
+              Etudiant next = iterator.next();
+              etudiantFormModel mdl=new etudiantFormModel();
+              mdl.setNumero(cpt);
+              mdl.setMatricule(next.getMatricule());
+              mdl.setDateN(next.getDateNaissance());
+              mdl.setLieuN(next.getLieuNaissance());
+              mdl.setPrenoms(next.getPrenom());
+              mdl.setNom(next.getNom());
+              mdl.setDerniereModif(next.getDerniereModif());
+              mdl.setEtudiant(next);
+              listObs.add(mdl);
+//             mdl.setC
+//             listObs.add(mdl);
+               cpt++;
+        }
+      return listObs;
+    }
     private List<Etudiant> findEtudiantEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {

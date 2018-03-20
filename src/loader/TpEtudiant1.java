@@ -6,6 +6,7 @@
 package loader;
 
 import controller.ClasseFormController;
+import controller.EtudiantFormController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,9 +33,13 @@ public class TpEtudiant1 extends Application {
             loader = new FXMLLoader();
            // loader.setLocation(getClass().getResource("/formuly/view/frontend/acceuille.fxml"));
            
-            loader.setLocation(getClass().getResource("/userInterface/classeForm.fxml"));
+           // loader.setLocation(getClass().getResource("/userInterface/classeForm.fxml"));
 //            dem=new DemarrageAppController();
-             loader.setController(ClasseFormController.class.newInstance());
+         //    loader.setController(ClasseFormController.class.newInstance());
+                  
+            loader.setLocation(getClass().getResource("/userInterface/etudiantForm.fxml"));
+//            dem=new DemarrageAppController();
+             loader.setController(EtudiantFormController.class.newInstance());
             Parent root = loader.load();
             primaryStage.setTitle("démarrage");
        //     primaryStage.getIcons().add(image);

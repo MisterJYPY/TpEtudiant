@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.jpa;
+package Model;
 
 import Entities.Classe;
 import java.io.Serializable;
@@ -13,9 +13,13 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Entities.Inscription;
 import controller.jpa.exceptions.NonexistentEntityException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
@@ -145,7 +149,21 @@ public class ClasseJpaController implements Serializable {
     public List<Classe> findClasseEntities() {
         return findClasseEntities(true, -1, -1);
     }
-
+ 
+    public ObservableList<classTableModel> listTableModel()
+    {
+        List<Classe> list=findClasseEntities();
+        ObservableList<classTableModel> listObs=FXCollections.observableArrayList();
+       int cpt=1;
+        for (Iterator<Classe> iterator = list.iterator(); iterator.hasNext();) {
+              Classe next = iterator.next();
+               classTableModel mdl=new classTableModel(cpt,next.getLibelle(),next.getDescription(),next.getDerniereModif(),next);
+             mdl.setClasse(next);
+             listObs.add(mdl);
+               cpt++;
+        }
+      return listObs;
+    }
     public List<Classe> findClasseEntities(int maxResults, int firstResult) {
         return findClasseEntities(false, maxResults, firstResult);
     }

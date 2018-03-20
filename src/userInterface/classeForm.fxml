@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="476.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -39,7 +38,7 @@
    <bottom>
       <BorderPane prefHeight="216.0" prefWidth="492.0" BorderPane.alignment="CENTER">
          <center>
-            <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <columns>
                 <TableColumn fx:id="table_numero" prefWidth="34.0" text="N°" />
                 <TableColumn fx:id="table_intitule" prefWidth="116.0" text="Intitule" />
