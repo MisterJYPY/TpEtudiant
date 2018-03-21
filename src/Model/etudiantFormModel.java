@@ -26,6 +26,7 @@ public class etudiantFormModel {
     private String modif;
     private String del;
     private Etudiant etudiant;
+    private String classe;
     
     public etudiantFormModel(Integer numero, String nom, String prenoms, Date dateN, String lieuN, Date derniereModif, String contact, String adresse) {
         this.numero = numero;
@@ -45,6 +46,14 @@ public class etudiantFormModel {
         this.dateN = dateN;
         this.lieuN = lieuN;
         this.adresse = adresse;
+    }
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
     }
 
     public Etudiant getEtudiant() {

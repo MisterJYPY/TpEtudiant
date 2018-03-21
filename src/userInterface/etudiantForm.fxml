@@ -96,6 +96,7 @@
             </Pane>
             <Button fx:id="valider" layoutX="374.0" layoutY="320.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="152.0" text="Enregistrer L'Etudiant" />
             <Label fx:id="alertM" layoutX="310.0" layoutY="270.0" prefHeight="19.0" prefWidth="260.0" text="Message Year" />
+            <Button fx:id="inscriregroupe" layoutX="510.0" layoutY="382.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="112.0" text="Inscrire Groupe" />
          </children>
       </AnchorPane>
    </center>

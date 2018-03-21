@@ -11,6 +11,7 @@ import Model.ClasseJpaController;
 import Model.EtudiantJpaController;
 import Model.etudiantFormModel;
 import controller.jpa.exceptions.NonexistentEntityException;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -21,7 +22,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -32,9 +36,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import loader.TpEtudiant1;
 
 /**
  * FXML Controller class
@@ -94,6 +100,9 @@ public class EtudiantFormController implements Initializable {
 
     @FXML
     private Button valider;
+    
+    @FXML
+    private Button inscriregroupe;
 
     @FXML
     private Label alertM;
@@ -107,8 +116,8 @@ public class EtudiantFormController implements Initializable {
     ClasseJpaController JpaCtrClasse;
      ObservableList<etudiantFormModel> list;
      ObservableList<etudiantFormModel> listTemp;
-
-     
+     FXMLLoader loader = null;
+     Stage stage=null;
     /**
      * Initializes the controller class.
      */
@@ -170,6 +179,24 @@ public class EtudiantFormController implements Initializable {
             list.add(modelEt);
          
         });
+        inscriregroupe.setOnAction(e->{
+            
+         try {
+            stage=new Stage();
+            loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/userInterface/inscrireEtudiant.fxml"));
+            inscrireEtudiantController ctrtp=new inscrireEtudiantController(listTemp);
+            loader.setController(ctrtp);
+            Parent root = loader.load();
+            stage.setTitle("InscrireEtudiant");
+            stage.setScene(new Scene(root));
+            stage.show();
+            
+        } catch (IOException ex) {        
+         Logger.getLogger(EtudiantFormController.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        });
+        
     }    
      private void initialisationTable()
     {
@@ -212,14 +239,20 @@ public class EtudiantFormController implements Initializable {
                                  {
                                  etudiantFormModel element = getTableView().getItems().get(getIndex());
                                   listTemp.add(element);
+                                  inscriregroupe.setDisable(false);
                                      System.out.println("nbre Element ajjj : "+listTemp.size());
                                  }
                                  else{
                                  etudiantFormModel element = getTableView().getItems().get(getIndex());
                                    listTemp.remove(element);
-                                    System.out.println("element decliquer : "+element.getNom());
-                                    System.out.println("nbre Element supp : "+listTemp.size());
-                                 }
+                                    if(listTemp.isEmpty())
+                                    {
+                                     inscriregroupe.setDisable(true);}
+                                    else{
+                                       inscriregroupe.setDisable(false);
+                                     }
+                                    }
+                               
                             
                             });
                             
